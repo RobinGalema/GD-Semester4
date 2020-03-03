@@ -29,10 +29,17 @@ public class playerMovement : MonoBehaviour
         horizontalMovement = Input.GetAxisRaw("Horizontal");
 
         // Check jump input
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            Debug.Log("Space pressed0");
+            Debug.Log("Jump button pressed");
             rb.velocity = Vector2.up * jumpForce;
+        }
+
+        // Check sneak input
+        if (Input.GetButtonDown("Sneak") && isGrounded)
+        {
+            Debug.Log("Sneaking");
+            sneak();
         }
 
         // Check if the player fell out of the level
@@ -47,11 +54,19 @@ public class playerMovement : MonoBehaviour
         rb.velocity = new Vector2(horizontalMovement * movespeed, rb.velocity.y);
     }
 
+    /// <summary>
+    /// Resets the player to their spawning position
+    /// </summary>
     private void resetPlayer()
     {
         // Player gets reset
         Debug.Log("--- Resetting player to spawning position ---");
         rb.position = spawnPos;
+    }
+
+    private void sneak()
+    {
+        // Change animation to sneaking and sneak
     }
 }
 
