@@ -21,10 +21,12 @@ public class doorAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //opens the door when the button is pressed
         if (buttonScript.isActivated && buttonPressed == false)
         {
             openDoor();
         }
+        //closes door when moved off of button
         if (buttonScript.isActivated == false && buttonPressed)
         {
             closeDoor();
@@ -33,18 +35,18 @@ public class doorAction : MonoBehaviour
 
     private void openDoor()
     {
-        Debug.Log("door should move");
-        door.transform.position = (positionA + new Vector2(0,4));
+        //moves door 4 increments upwards 
+        door.transform.position = (positionA + new Vector2(0, 4));
+        //sets button pressed to true, because otherwise it will move upwards once per frame
         buttonPressed = true;
-        Debug.Log("deeeeeurrr" + buttonPressed);
-
     }
 
     private void closeDoor()
     {
+        //moves door to original position
         door.transform.position = (positionA);
         buttonPressed = false;
     }
 }
-    
+
 
