@@ -40,7 +40,7 @@ public class playerMovement : MonoBehaviour
     /// <summary>
     /// Resets the player to their spawning position
     /// </summary>
-    private void resetPlayer()
+    public void resetPlayer()
     {
         // Player gets reset
         Debug.Log("--- Resetting player to spawning position ---");
