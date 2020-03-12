@@ -8,6 +8,7 @@ public class playerMovement : MonoBehaviour
     public Transform groundCheck;
     public float checkRadius;
     public LayerMask whatIsGround;
+    public LayerMask whatIsPlayer;
     public float jumpForce;
     public Transform fallDetector;
     public bool isMainPayer;
@@ -125,6 +126,12 @@ public class playerMovement : MonoBehaviour
 
         // Check if this player is grounded
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+        if (!isGrounded)
+        {
+            gameObject.layer = 0;
+            isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsPlayer);
+            gameObject.layer = 9;
+        }
 
         // Check if the player fell out of the level
         if (rb.position.y < fallDetector.position.y)
