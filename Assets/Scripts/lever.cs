@@ -7,6 +7,7 @@ public class lever : MonoBehaviour
     public bool isActive;
 
     private bool playerInRange = false;
+    private string controllerSuffix;
 
     private void Start()
     {
@@ -19,7 +20,7 @@ public class lever : MonoBehaviour
         // Check if the player is in range of the button and then check if the interaction button is pressed
         if (playerInRange)
         {
-            if (Input.GetButtonDown("Submit"))
+            if (Input.GetButtonDown("Submit" + controllerSuffix))
             {
                 Debug.Log(" ---> The player interacted with the button.");
                 changeLeverState();
@@ -33,6 +34,7 @@ public class lever : MonoBehaviour
         if (collision.tag == "Player")
         {
             Debug.Log("--- Player in button range ---");
+            controllerSuffix = collision.GetComponent<playerMovement>().controllerSuffix;
             playerInRange = true;
         }
     }
