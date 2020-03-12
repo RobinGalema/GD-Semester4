@@ -20,11 +20,10 @@ public class lever : MonoBehaviour
         // Check if the player is in range of the button and then check if the interaction button is pressed
         if (playerInRange)
         {
-            if (Input.GetButtonDown("Submit" + controllerSuffix))
+            if (Input.GetButtonDown("X" + controllerSuffix))
             {
                 Debug.Log(" ---> The player interacted with the button.");
                 changeLeverState();
-
             }
         }
     }
