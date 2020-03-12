@@ -111,7 +111,7 @@ public class playerMovement : MonoBehaviour
 
                 controllerSuffix = "2PS4";
             }
-            else if (Input.GetJoystickNames()[1] == "Controller (XBOX 360 For Windows)") ;
+            else if (Input.GetJoystickNames()[1] == "Controller (XBOX 360 For Windows)")
             {
                 // Check jump input
                 if (Input.GetButtonDown("Jump2X360") && isGrounded)
