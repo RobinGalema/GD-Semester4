@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class controllerAssigner : MonoBehaviour
 {
@@ -8,6 +6,8 @@ public class controllerAssigner : MonoBehaviour
     public playerMovement player2Control;
 
     private bool allPlayersAssigned;
+    private bool controller1Assigned;
+    private bool controller2Assigned;
 
     private void Start()
     {
@@ -22,8 +22,8 @@ public class controllerAssigner : MonoBehaviour
             {
                 if (Input.GetButtonDown("A" + i + "PS4"))
                 {
-                    Debug.Log("PS4 Controller set-up with controller index: " + i);
-                    assignController(i + "PS4");
+                    Debug.Log("Trying to set up PS4 Controller with controller index: " + i);
+                    assignController(i + "PS4", i);
                     break;
                 }
             }
@@ -33,32 +33,65 @@ public class controllerAssigner : MonoBehaviour
                 if (Input.GetButtonDown("A" + i + "XBOX"))
                 {
 
-                    Debug.Log("XBOX Controller set-up with controller index" + i);
-                    assignController(i + "XBOX");
+                    Debug.Log("Trying to set-up XBOX Controller with controller index" + i);
+                    assignController(i + "XBOX", i);
                     break;
                 }
             }
         }
     }
 
-    private void assignController(string controllerSuffix)
+    private void assignController(string controllerSuffix, int controllerNumber)    // Can be written better
     {
-        //Debug.Log(player1Control.controllerSuffix);
         if (player1Control.controllerSuffix == "")
         {
-            player1Control.controllerSuffix = controllerSuffix;
-            Debug.Log(player1Control.controllerSuffix);
-            return;
+            if (!controller1Assigned)
+            {
+                player1Control.controllerSuffix = controllerSuffix;
+                Debug.Log(player1Control.controllerSuffix);
+
+                assignControllers(controllerNumber);
+                player1Control.controllerNumber = controllerNumber;
+                Debug.Log("controller 1 assigned -> "+ controllerNumber);
+            }
+            else if (!controller2Assigned)
+            {
+                player1Control.controllerSuffix = controllerSuffix;
+                Debug.Log(player1Control.controllerSuffix);
+
+                assignControllers(controllerNumber);
+                player1Control.controllerNumber = controllerNumber;
+                Debug.Log("controller 2 assigned -> " + controllerNumber);
+            }
+
         }
-        else if (player1Control.controllerSuffix == controllerSuffix)
+        else if (player1Control.controllerNumber == controllerNumber)
         {
             Debug.LogError("This controller is already assigned");
             return;
         }
         else if (player2Control.controllerSuffix == "")
         {
-            player2Control.controllerSuffix = controllerSuffix;
-            Debug.Log(player2Control.controllerSuffix);
+            if (!controller1Assigned)
+            {
+                player2Control.controllerSuffix = controllerSuffix;
+                Debug.Log(player2Control.controllerSuffix);
+
+                assignControllers(controllerNumber);
+                player2Control.controllerNumber = controllerNumber;
+                Debug.Log("controller 1 assigned -> " + controllerNumber);
+
+            }
+            else if(!controller2Assigned)
+            {
+                player2Control.controllerSuffix = controllerSuffix;
+                Debug.Log(player2Control.controllerSuffix);
+
+                assignControllers(controllerNumber);
+                player2Control.controllerNumber = controllerNumber;
+                Debug.Log("controller 2 assigned -> " + controllerNumber);
+
+            }
         }
         else
         {
@@ -66,5 +99,19 @@ public class controllerAssigner : MonoBehaviour
             allPlayersAssigned = true;
         }
 
+    }
+
+    private void assignControllers(int controllerNumber)
+    {
+        if (controllerNumber == 1)
+        {
+            controller1Assigned = true;
+        }
+        else if (controllerNumber == 2)
+        {
+            controller2Assigned = true;
+        }
+        else
+            return;
     }
 }

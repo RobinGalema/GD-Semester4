@@ -18,6 +18,8 @@ public class playerMovement : MonoBehaviour
     private Vector2 spawnPos;
     
     public string controllerSuffix;
+    [HideInInspector]
+    public int controllerNumber;
 
     private void Start()
     {
