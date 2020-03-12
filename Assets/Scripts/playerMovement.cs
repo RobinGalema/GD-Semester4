@@ -11,25 +11,28 @@ public class playerMovement : MonoBehaviour
     public LayerMask whatIsPlayer;
     public float jumpForce;
     public Transform fallDetector;
-    public bool isMainPayer;
 
     private Rigidbody2D rb;
     private float horizontalMovement = 0f;
     private bool isGrounded;
     private Vector2 spawnPos;
+    
     public string controllerSuffix;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spawnPos = rb.position;
-        Debug.Log(Input.GetJoystickNames()[1]);
     }
 
     // Update is called once per frame
     void Update()
     {
-        getInput();
+        if (controllerSuffix != "")
+        {
+            getInput();
+            stateChecks();
+        }
     }
 
     private void FixedUpdate()
@@ -54,76 +57,32 @@ public class playerMovement : MonoBehaviour
 
     private void getInput()
     {
-        if (isMainPayer)
+        try
         {
-            // Movement input
-            horizontalMovement = Input.GetAxisRaw("Horizontal1");
+            // Basic movement
+            horizontalMovement = Input.GetAxisRaw("Horizontal" + controllerSuffix);
 
-            if (Input.GetButtonDown("Sneak1") && isGrounded)
+            // Jumping
+            if (Input.GetButtonDown("A" + controllerSuffix) && isGrounded)
             {
-                Debug.Log("Sneaking");
-                sneak();
+                rb.velocity = Vector2.up * jumpForce;
             }
 
-            if (Input.GetJoystickNames()[0] == "Wireless Controller")
+            // Sneaking
+            if (Input.GetButtonDown("LB" + controllerSuffix))
             {
-                // Check jump input
-                if (Input.GetButtonDown("Jump1PS4") && isGrounded)
-                {
-                    Debug.Log("Jump button pressed [P1]");
-                    rb.velocity = Vector2.up * jumpForce;
-                }
-
-                controllerSuffix = "1PS4";
-            }
-            else if (Input.GetJoystickNames()[0] == "Controller (XBOX 360 For Windows)")
-            {
-                // Check jump input
-                if (Input.GetButtonDown("Jump1X360") && isGrounded)
-                {
-                    Debug.Log("Jump button pressed [P1]");
-                    rb.velocity = Vector2.up * jumpForce;
-                }
-
-                controllerSuffix = "1X360";
-            }
-           
-        }
-        else
-        {
-            horizontalMovement = Input.GetAxisRaw("Horizontal2");
-
-            // Check sneak input
-            if (Input.GetButtonDown("Sneak2") && isGrounded)
-            {
-                Debug.Log("Sneaking");
-                sneak();
-            }
-
-            if (Input.GetJoystickNames()[1] == "Wireless Controller")
-            {
-                // Check jump input
-                if (Input.GetButtonDown("Jump2PS4") && isGrounded)
-                {
-                    Debug.Log("Jump button pressed [P1]");
-                    rb.velocity = Vector2.up * jumpForce;
-                }
-
-                controllerSuffix = "2PS4";
-            }
-            else if (Input.GetJoystickNames()[1] == "Controller (XBOX 360 For Windows)") ;
-            {
-                // Check jump input
-                if (Input.GetButtonDown("Jump2X360") && isGrounded)
-                {
-                    Debug.Log("Jump button pressed [P1]");
-                    rb.velocity = Vector2.up * jumpForce;
-                }
-
-                controllerSuffix = "2X360";
+                Debug.Log(controllerSuffix + " pressed the sneak button");
+                // Sneak
             }
         }
+        catch
+        {
+            Debug.LogError("No controller set-up for player");
+        }
+    }
 
+    private void stateChecks()
+    {
         // Check if this player is grounded
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
         if (!isGrounded)
