@@ -15,7 +15,7 @@ public class playerMovement : MonoBehaviour
 
 
     private Rigidbody2D rb;
-    private float horizontalMovement = 0f;
+    [HideInInspector] public float horizontalMovement = 0f;
     private bool isGrounded;
     
     public string controllerSuffix;
