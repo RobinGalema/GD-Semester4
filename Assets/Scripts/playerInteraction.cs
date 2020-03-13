@@ -5,13 +5,13 @@ using UnityEngine;
 public class playerInteraction : MonoBehaviour
 {
     playerMovement playerController;
-    // Start is called before the first frame update
+    // Start is called before the first frame update 
     void Start()
     {
         playerController = GetComponent<playerMovement>();
     }
 
-    
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
