@@ -114,7 +114,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 4806536539265274947}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b26c92e8500f05d4991441be5179a1b6, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -144,8 +144,8 @@ MonoBehaviour:
     m_Bits: 512
   jumpForce: 10
   fallDetector: {fileID: 0}
-  isMainPayer: 0
   controllerSuffix: 
+  controllerNumber: 0
 --- !u!1 &4806536540562647429
 GameObject:
   m_ObjectHideFlags: 0
