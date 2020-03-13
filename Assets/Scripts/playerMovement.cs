@@ -11,11 +11,12 @@ public class playerMovement : MonoBehaviour
     public LayerMask whatIsPlayer;
     public float jumpForce;
     public Transform fallDetector;
+    public Vector2 spawnPos;
+
 
     private Rigidbody2D rb;
     private float horizontalMovement = 0f;
     private bool isGrounded;
-    private Vector2 spawnPos;
     
     public string controllerSuffix;
     [HideInInspector]
