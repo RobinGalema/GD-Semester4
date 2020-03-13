@@ -13,7 +13,7 @@ public class playerMovement : MonoBehaviour
     public Transform fallDetector;
 
     private Rigidbody2D rb;
-    private float horizontalMovement = 0f;
+    [HideInInspector] public float horizontalMovement = 0f;
     private bool isGrounded;
     private Vector2 spawnPos;
     
