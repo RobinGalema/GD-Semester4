@@ -5,10 +5,10 @@ public class controllerAssigner : MonoBehaviour
     public playerMovement player1Control;
     public playerMovement player2Control;
 
+    [HideInInspector] public bool controller1Assigned;
+    [HideInInspector] public bool controller2Assigned;
     private bool allPlayersAssigned;
-    private bool controller1Assigned;
-    private bool controller2Assigned;
-
+    
     private void Start()
     {
         allPlayersAssigned = false;
