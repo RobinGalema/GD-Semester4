@@ -8,7 +8,7 @@ public class button : MonoBehaviour
     public bool isActivated = false;
     public int objectsNeeded;
 
-    private int objectsOnButton = 0;
+    [HideInInspector]public int objectsOnButton = 0;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

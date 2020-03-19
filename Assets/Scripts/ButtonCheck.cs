@@ -14,9 +14,8 @@ public class ButtonCheck : MonoBehaviour
 
     private void Start()
     {
-        sprite = GetComponent<SpriteRenderer>();
+        //sprite = GetComponent<SpriteRenderer>();
         setup();
-        stateChanged(state);
     }
 
     private void Update()
@@ -38,6 +37,7 @@ public class ButtonCheck : MonoBehaviour
             state = connectedLever.isActive;
             lastState = state;
         }
+
     }
 
     private void checkForStateChange()
@@ -49,7 +49,7 @@ public class ButtonCheck : MonoBehaviour
             if (state != lastState)
             {
                 Debug.Log("button state changed");
-                stateChanged(state);
+                //stateChanged(state);
             }
             lastState = state;
 
@@ -60,7 +60,7 @@ public class ButtonCheck : MonoBehaviour
             state = connectedLever.isActive;
             if (state != lastState)
             {
-                stateChanged(state);
+                //stateChanged(state);
             }
             lastState = state;
 
@@ -73,13 +73,13 @@ public class ButtonCheck : MonoBehaviour
         {
             // The button or lever is ON
             // do something
-            sprite.color = Color.green;
+            //sprite.color = Color.green;
         }
         else
         {
             // The button or lever is OFF
             // do something
-            sprite.color = Color.red;
+            //sprite.color = Color.red;
         }
     }
 }
