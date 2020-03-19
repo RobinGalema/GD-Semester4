@@ -95,7 +95,6 @@ public class weigthedObject : MonoBehaviour
             else
             {
                 // When the player is on top of the box it should not be able to be dragged
-                playerInRange = false;
                 objectIsDraggable = false;
             }
         }
