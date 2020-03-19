@@ -10,7 +10,6 @@ public class playerMovement : MonoBehaviour
     public LayerMask whatIsGround;
     public LayerMask whatIsPlayer;
     public float jumpForce;
-    public Transform fallDetector;
     public Vector2 spawnPos;
 
 
@@ -94,10 +93,15 @@ public class playerMovement : MonoBehaviour
             isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsPlayer);
             gameObject.layer = 9;
         }
+    }
 
-        // Check if the player fell out of the level
-        if (rb.position.y < fallDetector.position.y)
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Check if the player collided with the fall detection which would mean they fell out of the level
+        if (collision.tag == "fallDetection")
         {
+            // Reset the player
+            Debug.Log("player collided with the falldetector");
             resetPlayer();
         }
     }
