@@ -10,12 +10,15 @@ public class weigthedObject : MonoBehaviour
     private bool objectIsDraggable;
     private playerMovement playerController;
     private Transform playerGroundCheck;
+    private Vector2 spawnPos;
 
     private void Start()
     {
         rb = GetComponentInParent<Rigidbody2D>();
         playerInRange = false;
         objectIsDraggable = false;
+        spawnPos = rb.position;
+        Debug.Log(spawnPos);
     }
 
     // Update is called once per frame
@@ -56,6 +59,13 @@ public class weigthedObject : MonoBehaviour
             interactionSuffix = collision.GetComponent<playerMovement>().controllerSuffix;
             playerController = collision.GetComponent<playerMovement>();
             playerGroundCheck = collision.GetComponentInChildren<Transform>();
+        }
+        else if (collision.tag == "fallDetection")
+        {
+            Debug.Log(this.name + " fell out of the world, resetting to spawning position");
+            rb.position = spawnPos;
+            rb.rotation = 0f;
+            rb.velocity = Vector2.zero;
         }
     }
 
