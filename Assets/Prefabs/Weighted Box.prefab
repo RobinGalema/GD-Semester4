@@ -176,6 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInRange: 0
   objectWeight: 0
+  rb: {fileID: 5438596611365295871}
 --- !u!58 &1104988144638133282
 CircleCollider2D:
   m_ObjectHideFlags: 0
