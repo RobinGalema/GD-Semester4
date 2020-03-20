@@ -9,6 +9,5 @@ public class bridgePiece : MonoBehaviour
     private void Awake()
     {
         nextPosition = transform.position + new Vector3(2, 0, 0);
-        Destroy(gameObject, 1f);
     }
 }

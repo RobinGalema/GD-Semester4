@@ -642,6 +642,8 @@ MonoBehaviour:
   prototype: {fileID: 5889401886335412578, guid: f518dcf5eae0bd1489ddf00758164f02,
     type: 3}
   piecesToSpawn: 3
+  piecesDoDestroy: 1
+  timeAlive: 0.2
 --- !u!4 &786859920
 Transform:
   m_ObjectHideFlags: 0
