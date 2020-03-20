@@ -4,8 +4,8 @@ public class weigthedObject : MonoBehaviour
 {
     [SerializeField] private bool playerInRange;
     public float objectWeight;
+    public Rigidbody2D rb;
 
-    private Rigidbody2D rb;
     private string interactionSuffix;
     private bool objectIsDraggable;
     private playerMovement playerController;
@@ -14,7 +14,6 @@ public class weigthedObject : MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponentInParent<Rigidbody2D>();
         playerInRange = false;
         objectIsDraggable = false;
         spawnPos = rb.position;

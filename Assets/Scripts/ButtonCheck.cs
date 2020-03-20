@@ -8,7 +8,7 @@ public class ButtonCheck : MonoBehaviour
     public button connectedButton;
     public lever connectedLever;
 
-    private bool state;
+    [HideInInspector]public bool state;
     private bool lastState;
     private SpriteRenderer sprite;
 
@@ -40,7 +40,7 @@ public class ButtonCheck : MonoBehaviour
 
     }
 
-    private void checkForStateChange()
+    public bool checkForStateChange()
     {
         if (connectedButton != null)
         {
@@ -50,8 +50,11 @@ public class ButtonCheck : MonoBehaviour
             {
                 Debug.Log("button state changed");
                 //stateChanged(state);
+                lastState = state;
+                return true;
             }
             lastState = state;
+            return false;
 
         }
         else if (connectedLever != null)
@@ -61,9 +64,16 @@ public class ButtonCheck : MonoBehaviour
             if (state != lastState)
             {
                 //stateChanged(state);
+                lastState = state;
+                return true;
             }
             lastState = state;
+            return false;   
 
+        }
+        else
+        {
+            return false;
         }
     }
 
