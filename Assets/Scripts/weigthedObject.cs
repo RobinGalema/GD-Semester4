@@ -92,6 +92,7 @@ public class weigthedObject : MonoBehaviour
                     Debug.Log("The player wants to move the block around");
                     // Tag the object as draggable so it can be moved in FixedUpdate
                     objectIsDraggable = true;
+                    playerController.movementState = playerMovement.playerState.Dragging;
                 }
 
                 if (Input.GetButtonUp("RB" + interactionSuffix))
@@ -99,6 +100,7 @@ public class weigthedObject : MonoBehaviour
                     Debug.Log("The player wants to stop moving the block");
                     // Tag the object to immovable when the player releases the drag button
                     objectIsDraggable = false;
+                    playerController.movementState = playerMovement.playerState.Idle;
                 }
             }
             else

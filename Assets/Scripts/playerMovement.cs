@@ -11,15 +11,20 @@ public class playerMovement : MonoBehaviour
     public LayerMask whatIsPlayer;
     public float jumpForce;
     public Vector2 spawnPos;
-
+    public string controllerSuffix;
+    [HideInInspector]
+    public int controllerNumber;
 
     private Rigidbody2D rb;
     [HideInInspector] public float horizontalMovement = 0f;
     private bool isGrounded;
     
-    public string controllerSuffix;
-    [HideInInspector]
-    public int controllerNumber;
+    public enum playerState
+    {
+        Idle, Walking, Jumping, Falling, Dragging
+    }
+
+    public playerState movementState = new playerState();
 
     private void Start()
     {
@@ -63,11 +68,20 @@ public class playerMovement : MonoBehaviour
         {
             // Basic movement
             horizontalMovement = Input.GetAxisRaw("Horizontal" + controllerSuffix);
+            if (horizontalMovement != 0)
+            {
+                movementState = playerState.Walking;
+            }
+            else if (horizontalMovement == 0 && isGrounded && movementState != playerState.Dragging)
+            {
+                movementState = playerState.Idle;
+            }
 
             // Jumping
             if (Input.GetButtonDown("A" + controllerSuffix) && isGrounded)
             {
                 rb.velocity = Vector2.up * jumpForce;
+                movementState = playerState.Jumping;
             }
 
             // Sneaking
