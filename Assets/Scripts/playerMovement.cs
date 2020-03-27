@@ -12,11 +12,11 @@ public class playerMovement : MonoBehaviour
     public float jumpForce;
     public Vector2 spawnPos;
     public string controllerSuffix;
-    [HideInInspector]
-    public int controllerNumber;
+    [HideInInspector] public int controllerNumber;
 
     private Rigidbody2D rb;
     [HideInInspector] public float horizontalMovement = 0f;
+    [HideInInspector] public bool isDragging;
     private bool isGrounded;
     
     public enum playerState
@@ -30,6 +30,7 @@ public class playerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spawnPos = rb.position;
+        isDragging = false;
     }
 
     // Update is called once per frame
@@ -40,6 +41,7 @@ public class playerMovement : MonoBehaviour
             getInput();
             stateChecks();
         }
+        Debug.Log(movementState);
     }
 
     private void FixedUpdate()
@@ -68,12 +70,14 @@ public class playerMovement : MonoBehaviour
         {
             // Basic movement
             horizontalMovement = Input.GetAxisRaw("Horizontal" + controllerSuffix);
-            if (horizontalMovement != 0)
+            if (horizontalMovement != 0 && isGrounded && !isDragging)
             {
                 movementState = playerState.Walking;
+                Debug.Log("state: Walking");
             }
-            else if (horizontalMovement == 0 && isGrounded && movementState != playerState.Dragging)
+            else if (horizontalMovement == 0 && isGrounded && !isDragging)
             {
+                Debug.Log("state: Idle");
                 movementState = playerState.Idle;
             }
 
@@ -82,6 +86,7 @@ public class playerMovement : MonoBehaviour
             {
                 rb.velocity = Vector2.up * jumpForce;
                 movementState = playerState.Jumping;
+                Debug.Log("state: Jumping");
             }
 
             // Sneaking
