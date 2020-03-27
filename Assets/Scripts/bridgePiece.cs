@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class bridgePiece : MonoBehaviour
 {
-    [HideInInspector]public Vector3 nextPosition;
 
-    private void Awake()
+    [SerializeField] public Transform nextPosition;
+
+    private void Start()
     {
-        nextPosition = transform.position + new Vector3(2, 0, 0);
+    }
+
+    public Transform getNextSpawnPos()
+    {
+        return nextPosition;
     }
 }

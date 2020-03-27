@@ -639,11 +639,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab8c61bc53d0974b856e947e90c9580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prototype: {fileID: 5889401886335412578, guid: f518dcf5eae0bd1489ddf00758164f02,
+  prototype: {fileID: 3439794457348438716, guid: f518dcf5eae0bd1489ddf00758164f02,
     type: 3}
   piecesToSpawn: 3
   piecesDoDestroy: 1
-  timeAlive: 0.2
+  timeAlive: 0.5
 --- !u!4 &786859920
 Transform:
   m_ObjectHideFlags: 0

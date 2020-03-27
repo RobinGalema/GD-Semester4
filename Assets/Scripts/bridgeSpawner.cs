@@ -12,14 +12,14 @@ public class bridgeSpawner : MonoBehaviour
     private List<bridgePiece> spawnedPieces = new List<bridgePiece>();
     private ButtonCheck buttonCheck;
     private bool hasSpawned;
-    private Vector3 _nextSpawnPosition;
+    private Transform _nextSpawnPosition;
 
     // Start is called before the first frame update
     void Start()
     {
         buttonCheck = GetComponent<ButtonCheck>();
         hasSpawned = false;
-        _nextSpawnPosition = transform.position;
+        _nextSpawnPosition = transform;
     }
 
     // Update is called once per frame
@@ -43,10 +43,10 @@ public class bridgeSpawner : MonoBehaviour
         }
     }
 
-    private void spawnNext(Vector3 nextSpawnPosition)
+    private void spawnNext(Transform nextSpawnPosition)
     {
-        bridgePiece spawnedPiece = Instantiate(prototype, nextSpawnPosition, Quaternion.identity);
-        _nextSpawnPosition = spawnedPiece.nextPosition;
+        bridgePiece spawnedPiece = Instantiate(prototype, nextSpawnPosition);
+        _nextSpawnPosition = spawnedPiece.getNextSpawnPos();
         spawnedPieces.Add(spawnedPiece);
     }
 
@@ -54,8 +54,8 @@ public class bridgeSpawner : MonoBehaviour
     {
         for (int i = 0; i < piecesToSpawn; i++)
         {
-            yield return new WaitForSeconds(0.5f);
             spawnNext(_nextSpawnPosition);
+            yield return new WaitForSeconds(0.5f);    
         }
         if (piecesDoDestroy)
         {
@@ -66,12 +66,37 @@ public class bridgeSpawner : MonoBehaviour
 
     IEnumerator destroyPieces()
     {
+
+        /*
+        for (int i = spawnedPieces.Count; i-- > 0; )
+        {
+            yield return new WaitForSeconds(timeAlive);
+            Debug.Log("Destroying: " + spawnedPieces[i].gameObject.GetInstanceID());
+            Destroy(spawnedPieces[i].gameObject);
+        }
+        */
+
+        for (int i = 0; i < spawnedPieces.ToArray().Length; i++)
+        {
+            yield return new WaitForSeconds(timeAlive);
+            if (spawnedPieces[i] != null)
+            {
+                Debug.Log("Destroying: " + spawnedPieces[i].gameObject.GetInstanceID());
+                Destroy(spawnedPieces[i].gameObject);
+                spawnedPieces.Remove(spawnedPieces[i]);
+            }
+        }
+
+
+        /*
         foreach (var piece in spawnedPieces)
         {
             yield return new WaitForSeconds(timeAlive);
+            Debug.Log("Destroying: " + piece.gameObject.GetInstanceID());
             Destroy(piece.gameObject);
         }
+        */
         spawnedPieces.Clear();
-        _nextSpawnPosition = transform.position;
+        _nextSpawnPosition = transform;
     }
 }
