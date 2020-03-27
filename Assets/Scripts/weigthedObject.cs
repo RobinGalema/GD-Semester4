@@ -92,7 +92,6 @@ public class weigthedObject : MonoBehaviour
                     Debug.Log("The player wants to move the block around");
                     // Tag the object as draggable so it can be moved in FixedUpdate
                     objectIsDraggable = true;
-                    playerController.movementState = playerMovement.playerState.Dragging;
                     playerController.isDragging = true;
                 }
 

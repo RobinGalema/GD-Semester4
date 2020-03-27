@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,14 +17,7 @@ public class playerMovement : MonoBehaviour
     private Rigidbody2D rb;
     [HideInInspector] public float horizontalMovement = 0f;
     [HideInInspector] public bool isDragging;
-    private bool isGrounded;
-    
-    public enum playerState
-    {
-        Idle, Walking, Jumping, Falling, Dragging
-    }
-
-    public playerState movementState = new playerState();
+    [HideInInspector] public bool isGrounded = true;
 
     private void Start()
     {
@@ -41,7 +34,6 @@ public class playerMovement : MonoBehaviour
             getInput();
             stateChecks();
         }
-        Debug.Log(movementState);
     }
 
     private void FixedUpdate()
@@ -70,23 +62,11 @@ public class playerMovement : MonoBehaviour
         {
             // Basic movement
             horizontalMovement = Input.GetAxisRaw("Horizontal" + controllerSuffix);
-            if (horizontalMovement != 0 && isGrounded && !isDragging)
-            {
-                movementState = playerState.Walking;
-                Debug.Log("state: Walking");
-            }
-            else if (horizontalMovement == 0 && isGrounded && !isDragging)
-            {
-                Debug.Log("state: Idle");
-                movementState = playerState.Idle;
-            }
 
             // Jumping
             if (Input.GetButtonDown("A" + controllerSuffix) && isGrounded)
             {
                 rb.velocity = Vector2.up * jumpForce;
-                movementState = playerState.Jumping;
-                Debug.Log("state: Jumping");
             }
 
             // Sneaking
