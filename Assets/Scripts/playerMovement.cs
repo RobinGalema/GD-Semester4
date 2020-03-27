@@ -18,7 +18,7 @@ public class playerMovement : MonoBehaviour
     private Rigidbody2D rb;
     [HideInInspector] public float horizontalMovement = 0f;
     private bool isGrounded;
-    
+
     public enum playerState
     {
         Idle, Walking, Jumping, Falling, Dragging
@@ -40,6 +40,7 @@ public class playerMovement : MonoBehaviour
             getInput();
             stateChecks();
         }
+        Debug.Log(movementState);
     }
 
     private void FixedUpdate()
@@ -68,11 +69,11 @@ public class playerMovement : MonoBehaviour
         {
             // Basic movement
             horizontalMovement = Input.GetAxisRaw("Horizontal" + controllerSuffix);
-            if (horizontalMovement != 0)
+            if (horizontalMovement != 0 && movementState != playerState.Jumping)
             {
                 movementState = playerState.Walking;
             }
-            else if (horizontalMovement == 0 && isGrounded && movementState != playerState.Dragging)
+            else if (horizontalMovement == 0 && isGrounded && movementState != playerState.Dragging && movementState != playerState.Jumping)
             {
                 movementState = playerState.Idle;
             }
@@ -106,6 +107,10 @@ public class playerMovement : MonoBehaviour
             gameObject.layer = 0;
             isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsPlayer);
             gameObject.layer = 9;
+        }
+        else
+        {
+            movementState = playerState.Idle;
         }
     }
 

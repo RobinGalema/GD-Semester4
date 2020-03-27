@@ -131,7 +131,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4806536539265274947}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdb7e2c38cc52e94da7d1adf4f004790, type: 3}
+  m_Script: {fileID: 11500000, guid: 231e727e683ad024998f4b2a30f993c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movespeed: 5
@@ -144,11 +144,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   jumpForce: 10
-  fallDetector: {fileID: 0}
   spawnPos: {x: 0, y: 0}
-  horizontalMovement: 0
   controllerSuffix: 
   controllerNumber: 0
+  horizontalMovement: 0
+  movementState: 0
 --- !u!114 &1630089783990037030
 MonoBehaviour:
   m_ObjectHideFlags: 0
