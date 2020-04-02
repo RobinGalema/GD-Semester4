@@ -62,6 +62,14 @@ public class playerMovement : MonoBehaviour
         {
             // Basic movement
             horizontalMovement = Input.GetAxisRaw("Horizontal" + controllerSuffix);
+            if(horizontalMovement < 0)
+            {
+                transform.localScale = new Vector3(-5, 5, 5);
+            }
+            else
+            {
+                transform.localScale = new Vector3(5, 5, 5);
+            }
 
             // Jumping
             if (Input.GetButtonDown("A" + controllerSuffix) && isGrounded)

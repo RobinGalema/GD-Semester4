@@ -5,6 +5,8 @@ using UnityEngine;
 public class lever : MonoBehaviour
 {
     public bool isActive;
+    public Transform parentTransform;
+
 
     private bool playerInRange = false;
     private string controllerSuffix;
@@ -12,6 +14,7 @@ public class lever : MonoBehaviour
     private void Start()
     {
         isActive = false;
+       
     }
 
     // Update is called once per frame
@@ -24,6 +27,15 @@ public class lever : MonoBehaviour
             {
                 Debug.Log(" ---> The player interacted with the button.");
                 changeLeverState();
+
+                if (isActive)
+                {
+                   parentTransform.localScale = new Vector3(1, -1, 1);
+                }
+                else
+                {
+                    parentTransform.localScale = new Vector3(1, 1, 1);
+                }
             }
         }
     }
