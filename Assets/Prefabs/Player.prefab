@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4806536539265274951}
   - component: {fileID: 4806536539265274950}
   - component: {fileID: 4806536539265274945}
+  - component: {fileID: 102824644363590488}
   - component: {fileID: 4806536539265274944}
-  - component: {fileID: 4806536539265274948}
   - component: {fileID: 1630089783990037030}
+  - component: {fileID: 3619017100111726564}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -106,6 +107,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &102824644363590488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4806536539265274947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 231e727e683ad024998f4b2a30f993c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movespeed: 5
+  groundCheck: {fileID: 4806536540562647434}
+  checkRadius: 0.5
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 512
+  jumpForce: 10
+  spawnPos: {x: 0, y: 0}
+  controllerSuffix: 
+  controllerNumber: 0
+  horizontalMovement: 0
+  isDragging: 0
+  isGrounded: 1
 --- !u!58 &4806536539265274944
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -122,33 +151,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
---- !u!114 &4806536539265274948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4806536539265274947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdb7e2c38cc52e94da7d1adf4f004790, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movespeed: 5
-  groundCheck: {fileID: 4806536540562647434}
-  checkRadius: 0.5
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 256
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 512
-  jumpForce: 10
-  fallDetector: {fileID: 0}
-  spawnPos: {x: 0, y: 0}
-  horizontalMovement: 0
-  controllerSuffix: 
-  controllerNumber: 0
 --- !u!114 &1630089783990037030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +163,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87d208bd2309fa64cb8e8e82b1269ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3619017100111726564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4806536539265274947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceaa1d464dbe74486a103bcbfbad03ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentMoveState: 0
 --- !u!1 &4806536540562647429
 GameObject:
   m_ObjectHideFlags: 0
