@@ -197,6 +197,31 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.113193154
       objectReference: {fileID: 0}
+    - target: {fileID: 4806536539265274948, guid: aac2c57a76d52664fb99b2c8b4d9b14a,
+        type: 3}
+      propertyPath: groundCheck
+      value: 
+      objectReference: {fileID: 1932415649}
+    - target: {fileID: 4806536539265274948, guid: aac2c57a76d52664fb99b2c8b4d9b14a,
+        type: 3}
+      propertyPath: whatIsGround.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806536539265274948, guid: aac2c57a76d52664fb99b2c8b4d9b14a,
+        type: 3}
+      propertyPath: whatIsPlayer.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806536539265274948, guid: aac2c57a76d52664fb99b2c8b4d9b14a,
+        type: 3}
+      propertyPath: checkRadius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806536539265274948, guid: aac2c57a76d52664fb99b2c8b4d9b14a,
+        type: 3}
+      propertyPath: jumpForce
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4806536539265274950, guid: aac2c57a76d52664fb99b2c8b4d9b14a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: aac2c57a76d52664fb99b2c8b4d9b14a, type: 3}
@@ -992,6 +1017,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fe2e7cacfe26d14c80ed9bfe80bf182, type: 3}
+--- !u!4 &1932415649 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4806536540562647434, guid: aac2c57a76d52664fb99b2c8b4d9b14a,
+    type: 3}
+  m_PrefabInstance: {fileID: 86738605}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1964422786
 PrefabInstance:
   m_ObjectHideFlags: 0
