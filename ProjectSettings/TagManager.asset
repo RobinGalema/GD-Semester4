@@ -8,6 +8,7 @@ TagManager:
   - NewCheckpoint
   - Spike
   - fallDetection
+  - chaseCamera
   layers:
   - Default
   - TransparentFX
