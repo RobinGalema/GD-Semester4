@@ -120,6 +120,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &28345362 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4806536540562647434, guid: aac2c57a76d52664fb99b2c8b4d9b14a,
+    type: 3}
+  m_PrefabInstance: {fileID: 86738605}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &86738605
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -197,8 +203,19 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.113193154
       objectReference: {fileID: 0}
+    - target: {fileID: 4806536539265274948, guid: aac2c57a76d52664fb99b2c8b4d9b14a,
+        type: 3}
+      propertyPath: jumpForce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219307201478925920, guid: aac2c57a76d52664fb99b2c8b4d9b14a,
+        type: 3}
+      propertyPath: groundCheck
+      value: 
+      objectReference: {fileID: 28345362}
     m_RemovedComponents:
     - {fileID: 4806536539265274950, guid: aac2c57a76d52664fb99b2c8b4d9b14a, type: 3}
+    - {fileID: 4806536539265274948, guid: aac2c57a76d52664fb99b2c8b4d9b14a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: aac2c57a76d52664fb99b2c8b4d9b14a, type: 3}
 --- !u!4 &337343822 stripped
 Transform:
@@ -389,7 +406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cac8957037a44647962cc6c79a229a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1Control: {fileID: 0}
+  player1Control: {fileID: 1240033757}
   player2Control: {fileID: 0}
   controller1Assigned: 0
   controller2Assigned: 0
@@ -426,18 +443,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentMoveState: 0
---- !u!114 &1240033751 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4806536539265274948, guid: aac2c57a76d52664fb99b2c8b4d9b14a,
-    type: 3}
-  m_PrefabInstance: {fileID: 86738605}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1240033749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdb7e2c38cc52e94da7d1adf4f004790, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1240033754
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -474,6 +479,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6be3b8b884d64f14e95767f0882e32df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1240033757 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4219307201478925920, guid: aac2c57a76d52664fb99b2c8b4d9b14a,
+    type: 3}
+  m_PrefabInstance: {fileID: 86738605}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240033749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb7e2c38cc52e94da7d1adf4f004790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1304977736
@@ -765,7 +782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cac8957037a44647962cc6c79a229a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1Control: {fileID: 1240033751}
+  player1Control: {fileID: 0}
   player2Control: {fileID: 0}
   controller1Assigned: 0
   controller2Assigned: 0
