@@ -1,43 +1,69 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class animationController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private playerMovement movement;
+    private stateController state;
     private Animator animator;
-    private playerMovement.playerState lastState = new playerMovement.playerState();
+    private stateController.movementState lastState;
+
     void Start()
     {
-        movement = GetComponent<playerMovement>();
+        state = GetComponent<stateController>();
         animator = GetComponentInChildren<Animator>();
         animator.Play("idle");
-        lastState = playerMovement.playerState.Idle;
     }
 
     // Update is called once per frame
     void Update()
     {
-        AnimationUpdate();
+       if (didStateChange())
+        {
+            setAnimation();
+        }
     }
 
-    private void AnimationUpdate()
+    void setAnimation()
     {
-        if (movement.movementState == playerMovement.playerState.Idle && lastState != playerMovement.playerState.Idle)
+        Debug.Log("State changed, changing animation");
+
+        switch (state.currentMoveState)
         {
-            animator.SetFloat("animator",0);
-            lastState = playerMovement.playerState.Idle;
+            case stateController.movementState.Idle:
+                // Idle
+                animator.SetTrigger("ToIdle");
+                break;
+
+            case stateController.movementState.Walking:
+                //Walking
+                animator.SetTrigger("ToWalk");
+                break;
+
+            case stateController.movementState.Jumping:
+                //jumping
+                animator.SetTrigger("ToJump");
+                break;
+
+            default:
+                //Idle
+                animator.SetTrigger("ToIdle");
+                break;
         }
-        else if (movement.movementState == playerMovement.playerState.Walking && lastState != playerMovement.playerState.Walking)
+    }
+
+    public bool didStateChange()
+    {
+        if (state.currentMoveState != lastState)
         {
-            animator.SetFloat("animator", 1);
-            lastState = playerMovement.playerState.Walking;
+            Debug.Log("---> The state of the player has changed, new state ---> " + state.currentMoveState);
+            lastState = state.currentMoveState;
+            return true;
         }
-        else if (movement.movementState == playerMovement.playerState.Jumping && lastState != playerMovement.playerState.Jumping)
+        else
         {
-            animator.SetFloat("animator", 2);
-            lastState = playerMovement.playerState.Jumping;
+            return false;
         }
     }
 }

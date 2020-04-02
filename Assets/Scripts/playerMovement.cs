@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,24 +12,18 @@ public class playerMovement : MonoBehaviour
     public float jumpForce;
     public Vector2 spawnPos;
     public string controllerSuffix;
-    [HideInInspector]
-    public int controllerNumber;
+    [HideInInspector] public int controllerNumber;
 
     private Rigidbody2D rb;
     [HideInInspector] public float horizontalMovement = 0f;
-    private bool isGrounded;
-
-    public enum playerState
-    {
-        Idle, Walking, Jumping, Falling, Dragging
-    }
-
-    public playerState movementState = new playerState();
+    [HideInInspector] public bool isDragging;
+    [HideInInspector] public bool isGrounded = true;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spawnPos = rb.position;
+        isDragging = false;
     }
 
     // Update is called once per frame
@@ -69,20 +63,11 @@ public class playerMovement : MonoBehaviour
         {
             // Basic movement
             horizontalMovement = Input.GetAxisRaw("Horizontal" + controllerSuffix);
-            if (horizontalMovement != 0 && movementState != playerState.Jumping)
-            {
-                movementState = playerState.Walking;
-            }
-            else if (horizontalMovement == 0 && isGrounded && movementState != playerState.Dragging && movementState != playerState.Jumping)
-            {
-                movementState = playerState.Idle;
-            }
 
             // Jumping
             if (Input.GetButtonDown("A" + controllerSuffix) && isGrounded)
             {
                 rb.velocity = Vector2.up * jumpForce;
-                movementState = playerState.Jumping;
             }
 
             // Sneaking
