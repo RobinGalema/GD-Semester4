@@ -28,6 +28,7 @@ public class chaseController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
+        // Check if the player got overtaken by the camera, if so invoke the unityevent
         if (hasOvertakenPlayer != chaseCamController.playerOvertaken)
         {
             if (chaseCamController.playerOvertaken == true)
@@ -40,17 +41,22 @@ public class chaseController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Check if the chase is started
         if (isChasing == true)
         {
+            // Move the camera to the right
             chaseCam.transform.position = chaseCam.transform.position + new Vector3(chaseSpeed, 0f, 0f);
 
             if (player != null)
             {
                 Debug.Log("player referenced");
+                // Check if the player has reached the end of the chase and end the chase if they have
                 if (player.transform.position.x >= chaseEnd.position.x)
                 {
                     Debug.Log("stopping chase");
                     isChasing = false;
+                    
+                    // Switch to the normal camera
                     camController.ToggleCamera(0);
                 }
             }
@@ -77,16 +83,22 @@ public class chaseController : MonoBehaviour
 
     private void startChase()
     {
+        // Set the chase variable to true to start moving the camera in fixedUpdate
         isChasing = true;
         chaseCam.GetComponent<chaseCamera>().startedChase = true;
+
+        // Disable the start collider when the chase is started
         this.GetComponent<BoxCollider2D>().enabled = false;
     }
 
     private void onCameraOvertake()
     {
+        // Set the chase variable to false to stop moving the camera in fixedUpdate
         isChasing = false;
+        // Reset the camera position to the start of the chase
         chaseCam.transform.position = chaseCameraStartPos;
-        Debug.Log(chaseCameraStartPos);
+
+        // Reset the player and restart the chase
         player.GetComponent<playerMovement>().resetPlayer();
         startChase();
     }
