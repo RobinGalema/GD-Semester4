@@ -34,7 +34,6 @@ public class playerMovement : MonoBehaviour
             getInput();
             stateChecks();
         }
-        Debug.Log(movementState);
     }
 
     private void FixedUpdate()
@@ -92,10 +91,6 @@ public class playerMovement : MonoBehaviour
             gameObject.layer = 0;
             isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsPlayer);
             gameObject.layer = 9;
-        }
-        else
-        {
-            movementState = playerState.Idle;
         }
     }
 
