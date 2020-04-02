@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bridgeSpawner : MonoBehaviour
+public class bridgeFactory : MonoBehaviour
 {
     public bridgePiece prototype;
     public int piecesToSpawn;
@@ -55,47 +55,23 @@ public class bridgeSpawner : MonoBehaviour
         for (int i = 0; i < piecesToSpawn; i++)
         {
             spawnNext(_nextSpawnPosition);
-            yield return new WaitForSeconds(0.5f);    
+            yield return new WaitForSeconds(0.5f);
         }
         if (piecesDoDestroy)
         {
-            StartCoroutine(destroyPieces());
+            yield return new WaitForSeconds(timeAlive);
+            destroyPieces();
         }
-        
+
     }
 
-    IEnumerator destroyPieces()
+    public void destroyPieces()
     {
-
-        /*
-        for (int i = spawnedPieces.Count; i-- > 0; )
-        {
-            yield return new WaitForSeconds(timeAlive);
-            Debug.Log("Destroying: " + spawnedPieces[i].gameObject.GetInstanceID());
-            Destroy(spawnedPieces[i].gameObject);
-        }
-        */
-
-        /*for (int i = 0; i < spawnedPieces.ToArray().Length; i++)
-        {
-            yield return new WaitForSeconds(timeAlive);
-            if (spawnedPieces[i] != null)
-            {
-                Debug.Log("Destroying: " + spawnedPieces[i].gameObject.GetInstanceID());
-                Destroy(spawnedPieces[i].gameObject);
-                spawnedPieces.Remove(spawnedPieces[i]);
-            }
-        }
-        */
-
-
         foreach (var piece in spawnedPieces)
         {
-            yield return new WaitForSeconds(timeAlive);
             Debug.Log("Destroying: " + piece.gameObject.GetInstanceID());
             Destroy(piece.gameObject);
         }
-
         spawnedPieces.Clear();
         _nextSpawnPosition = transform.position;
     }

@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1060154207714784906}
   - component: {fileID: 876909036142828142}
-  - component: {fileID: 3439794457348438716}
+  - component: {fileID: 4449687738168520943}
   m_Layer: 8
   m_Name: BridgePiece
   m_TagString: Untagged
@@ -90,7 +90,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.002247, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3439794457348438716
+--- !u!114 &4449687738168520943
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

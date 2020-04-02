@@ -618,8 +618,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 786859920}
-  - component: {fileID: 786859919}
   - component: {fileID: 786859921}
+  - component: {fileID: 786859919}
   m_Layer: 0
   m_Name: BridgeSpawner
   m_TagString: Untagged
@@ -636,10 +636,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 786859918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cab8c61bc53d0974b856e947e90c9580, type: 3}
+  m_Script: {fileID: 11500000, guid: 21cc8fae7c74b4542a94cadab167772b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prototype: {fileID: 3439794457348438716, guid: f518dcf5eae0bd1489ddf00758164f02,
+  prototype: {fileID: 4449687738168520943, guid: f518dcf5eae0bd1489ddf00758164f02,
     type: 3}
   piecesToSpawn: 3
   piecesDoDestroy: 1

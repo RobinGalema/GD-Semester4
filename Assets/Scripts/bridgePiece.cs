@@ -7,12 +7,13 @@ public class bridgePiece : MonoBehaviour
 
     [SerializeField] public Transform nextPosition;
 
-    private void Start()
+    private void Awake()
     {
+
     }
 
-    public Transform getNextSpawnPos()
+    public Vector3 getNextSpawnPos()
     {
-        return nextPosition;
+        return nextPosition.position;
     }
 }
