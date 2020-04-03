@@ -13,11 +13,13 @@ public class stateController : MonoBehaviour
 
     private playerMovement movement;
     private movementState lastState;
+    public PlayerInfo playerInfo;
 
     // Start is called before the first frame update
     void Start()
     {
         movement = GetComponent<playerMovement>();
+        playerInfo.StoreToDisk();
     }
 
     // Update is called once per frame
