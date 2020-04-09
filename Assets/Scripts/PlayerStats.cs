@@ -10,9 +10,8 @@ public class PlayerStats : MonoBehaviour
     public PlayerInfo playerInfo;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
-
     }
 
     public void setSpawnPos(Vector2 newPos)

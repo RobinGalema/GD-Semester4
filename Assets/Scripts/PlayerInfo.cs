@@ -8,6 +8,7 @@ public class PlayerInfo : ScriptableObject
 {
     public Vector2 spawnPos;
     public int deathCounter;
+    public string controllerSuffix;
 
     public string savePath => Application.persistentDataPath + Path.DirectorySeparatorChar + name + ".txt";
 
