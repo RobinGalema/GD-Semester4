@@ -12,18 +12,39 @@ public class playerMovement : MonoBehaviour
     public float jumpForce;
     public Vector2 spawnPos;
     public string controllerSuffix;
+
     [HideInInspector] public int controllerNumber;
 
     private Rigidbody2D rb;
     [HideInInspector] public float horizontalMovement = 0f;
     [HideInInspector] public bool isDragging;
     [HideInInspector] public bool isGrounded = true;
-
+    [HideInInspector] public PlayerStats playerStats;
+    
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        spawnPos = rb.position;
+        playerStats = GetComponent<PlayerStats>();
         isDragging = false;
+
+        if (!playerStats.doesSaveExist())
+        {
+            spawnPos = rb.position;
+            playerStats.setSpawnPos(spawnPos);
+            playerStats.setDeaths(0);
+            playerStats.playerInfo.StoreToDisk();
+        }
+        else
+        {
+            playerStats.doesSaveExist();
+            spawnPos = playerStats.spawnPos;
+            rb.position = spawnPos;
+        }
+
+        if (playerStats.playerInfo.controllerSuffix != "")
+        {
+            controllerSuffix = playerStats.playerInfo.controllerSuffix;
+        }
     }
 
     // Update is called once per frame

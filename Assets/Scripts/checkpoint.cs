@@ -19,6 +19,8 @@ public class checkpoint : MonoBehaviour
         {
             Player = other.gameObject.GetComponent<playerMovement>();
             Player.spawnPos = checkPointPos;
+            Player.playerStats.setSpawnPos(checkPointPos);
+            Player.playerStats.playerInfo.StoreToDisk();
             Debug.Log("checkpoint changed");
         }
     }

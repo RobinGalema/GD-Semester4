@@ -4,6 +4,8 @@ public class controllerAssigner : MonoBehaviour
 {
     public playerMovement player1Control;
     public playerMovement player2Control;
+    public PlayerInfo player1Info;
+    public PlayerInfo player2Info;
 
     [HideInInspector] public bool controller1Assigned;
     [HideInInspector] public bool controller2Assigned;
@@ -63,6 +65,7 @@ public class controllerAssigner : MonoBehaviour
                 player1Control.controllerNumber = controllerNumber;
                 Debug.Log("controller 2 assigned -> " + controllerNumber);
             }
+            player1Info.controllerSuffix = controllerSuffix;
 
         }
         else if (player1Control.controllerNumber == controllerNumber)
@@ -92,6 +95,7 @@ public class controllerAssigner : MonoBehaviour
                 Debug.Log("controller 2 assigned -> " + controllerNumber);
 
             }
+            player2Control.controllerSuffix = controllerSuffix;
         }
         else
         {
