@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class doorAction : MonoBehaviour
 {
-    public button buttonScript;
-
+    public List<button>  buttonScripts = new List<button>();
     public GameObject door;
 
-    private bool buttonPressed = false;
     private Vector2 positionA;
+    private bool wasActive = false;
 
 
     // Start is called before the first frame update
@@ -21,31 +20,40 @@ public class doorAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //opens the door when the button is pressed
-        if (buttonScript.isActivated && buttonPressed == false)
+        if (checkIfActive() && !wasActive)
         {
             openDoor();
+            wasActive = true;
         }
-        //closes door when moved off of button
-        if (buttonScript.isActivated == false && buttonPressed)
+        else if (!checkIfActive() && wasActive)
         {
             closeDoor();
-        }
+            wasActive = false;
+        }      
     }
 
     private void openDoor()
     {
         //moves door 4 increments upwards 
-        door.transform.position = (positionA + new Vector2(0, 4));
-        //sets button pressed to true, because otherwise it will move upwards once per frame
-        buttonPressed = true;
+        door.transform.position = (positionA + new Vector2(0, 4));       
     }
 
     private void closeDoor()
     {
         //moves door to original position
-        door.transform.position = (positionA);
-        buttonPressed = false;
+        door.transform.position = (positionA); 
+    }
+
+    private bool checkIfActive()
+    {
+        foreach(var button in buttonScripts)
+        {
+            if (button.isActivated)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
 
