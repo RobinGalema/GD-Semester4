@@ -40,11 +40,6 @@ public class playerMovement : MonoBehaviour
             spawnPos = playerStats.spawnPos;
             rb.position = spawnPos;
         }
-
-        if (playerStats.playerInfo.controllerSuffix != "")
-        {
-            controllerSuffix = playerStats.playerInfo.controllerSuffix;
-        }
     }
 
     // Update is called once per frame
