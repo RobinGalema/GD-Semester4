@@ -9,8 +9,9 @@ public class doorAction : MonoBehaviour
     public float moveX = 0f;
     public float moveY = 0f;
     public float rotation = 0;
+    public lever leverScript;
 
-
+    private Quaternion standardRotation;
     private Vector2 positionA;
     private bool wasActive = false;
 
@@ -19,6 +20,7 @@ public class doorAction : MonoBehaviour
     void Start()
     {
         positionA = door.transform.position;
+        standardRotation = transform.rotation;
     }
 
     // Update is called once per frame
@@ -46,7 +48,8 @@ public class doorAction : MonoBehaviour
     private void closeDoor()
     {
         //moves door to original position
-        door.transform.position = (positionA); 
+        door.transform.position = (positionA);
+        door.transform.rotation = standardRotation;
     }
 
     private bool checkIfActive()
@@ -54,6 +57,14 @@ public class doorAction : MonoBehaviour
         foreach(var button in buttonScripts)
         {
             if (button.isActivated)
+            {
+                return true;
+            }
+        }
+
+        if (leverScript !=null)
+        {
+            if (leverScript.isActive)
             {
                 return true;
             }
