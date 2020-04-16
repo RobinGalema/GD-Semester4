@@ -5,6 +5,7 @@ public class weigthedObject : MonoBehaviour
     [SerializeField] private bool playerInRange;
     public float objectWeight;
     public Rigidbody2D rb;
+    public GameObject rbIcon;
 
     private string interactionSuffix;
     private bool objectIsDraggable;
@@ -18,6 +19,7 @@ public class weigthedObject : MonoBehaviour
         objectIsDraggable = false;
         spawnPos = rb.position;
         Debug.Log(spawnPos);
+        rbIcon.SetActive(false);
     }
 
     // Update is called once per frame
@@ -58,6 +60,7 @@ public class weigthedObject : MonoBehaviour
             interactionSuffix = collision.GetComponent<playerMovement>().controllerSuffix;
             playerController = collision.GetComponent<playerMovement>();
             playerGroundCheck = collision.GetComponentInChildren<Transform>();
+            rbIcon.SetActive(true);
         }
         else if (collision.tag == "fallDetection")
         {
@@ -75,6 +78,7 @@ public class weigthedObject : MonoBehaviour
         {
             Debug.Log("--- Player leaving box range [" + this.name + "] ---");
             playerInRange = false;
+            rbIcon.SetActive(false);
         }
     }
 
@@ -93,6 +97,7 @@ public class weigthedObject : MonoBehaviour
                     // Tag the object as draggable so it can be moved in FixedUpdate
                     objectIsDraggable = true;
                     playerController.isDragging = true;
+                    rbIcon.SetActive(false);
                 }
 
                 if (Input.GetButtonUp("RB" + interactionSuffix))
@@ -101,6 +106,7 @@ public class weigthedObject : MonoBehaviour
                     // Tag the object to immovable when the player releases the drag button
                     objectIsDraggable = false;
                     playerController.isDragging = false;
+                    rbIcon.SetActive(true);
                 }
             }
             else
