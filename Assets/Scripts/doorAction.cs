@@ -9,6 +9,7 @@ public class doorAction : MonoBehaviour
     public float moveX = 0f;
     public float moveY = 0f;
     public float rotation = 0;
+    public lever leverScript;
 
 
     private Vector2 positionA;
@@ -54,6 +55,14 @@ public class doorAction : MonoBehaviour
         foreach(var button in buttonScripts)
         {
             if (button.isActivated)
+            {
+                return true;
+            }
+        }
+
+        if (leverScript !=null)
+        {
+            if (leverScript.isActive)
             {
                 return true;
             }
