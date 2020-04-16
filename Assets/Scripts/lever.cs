@@ -6,7 +6,7 @@ public class lever : MonoBehaviour
 {
     public bool isActive;
     public Transform parentTransform;
-
+    public GameObject xButtonIcon;
 
     private bool playerInRange = false;
     private string controllerSuffix;
@@ -14,6 +14,7 @@ public class lever : MonoBehaviour
     private void Start()
     {
         isActive = false;
+        xButtonIcon.SetActive(false);
        
     }
 
@@ -30,11 +31,11 @@ public class lever : MonoBehaviour
 
                 if (isActive)
                 {
-                   parentTransform.localScale = new Vector3(1, -1, 1);
+                   parentTransform.localScale = new Vector3(transform.position.x, -1, 1);
                 }
                 else
                 {
-                    parentTransform.localScale = new Vector3(1, 1, 1);
+                    parentTransform.localScale = new Vector3(transform.position.x, 1, 1);
                 }
             }
         }
@@ -47,6 +48,7 @@ public class lever : MonoBehaviour
             Debug.Log("--- Player in button range ---");
             controllerSuffix = collision.GetComponent<playerMovement>().controllerSuffix;
             playerInRange = true;
+            xButtonIcon.SetActive(true);
         }
     }
 
@@ -56,6 +58,7 @@ public class lever : MonoBehaviour
         {
             Debug.Log("--- Player leaving button range ---");
             playerInRange = false;
+            xButtonIcon.SetActive(false);
         }
     }
 
@@ -64,5 +67,9 @@ public class lever : MonoBehaviour
         // Change isActive to its opposite
             isActive = !isActive;
         Debug.Log("---> Is the lever active? : " + isActive);
+        if (isActive)
+        {
+            xButtonIcon.SetActive(false);
+        }
     }
 }
