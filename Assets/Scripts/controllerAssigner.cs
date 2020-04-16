@@ -40,6 +40,12 @@ public class controllerAssigner : MonoBehaviour
                     break;
                 }
             }
+
+            if (Input.GetButtonDown("A1KEY"))
+            {
+                Debug.Log("Trying to set-up Keyboard control");
+                assignController("1KEY", 3);
+            }
         }
     }
 
