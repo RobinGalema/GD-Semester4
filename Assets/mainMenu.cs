@@ -5,13 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class mainMenu : MonoBehaviour
 {
-    public int yeet;
 
     public void PlayGame()
     {
 
         Debug.Log("button start clicked");
-        SceneManager.LoadScene("level1");
+        SceneManager.LoadScene("IntroLevel");
     }
 
     public void QuitGame()
