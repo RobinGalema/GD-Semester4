@@ -127,6 +127,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7886995524245971495, guid: e2eabfed90fe91a4d9499ccffc41d828,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -8807927608424582482, guid: e8afd28d5d762004e8b7ed29553b6178,
+        type: 2}
     - target: {fileID: 5890782712686003195, guid: e2eabfed90fe91a4d9499ccffc41d828,
         type: 3}
       propertyPath: m_Name
@@ -31385,6 +31391,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 118e40c695c4dfc40a83a5f3f7426f22, type: 3}
+--- !u!114 &736540330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 678372791251024198, guid: 657b5194959934e4cbd0c88df58744a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1114738539}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940063299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 231e727e683ad024998f4b2a30f993c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movespeed: 5
+  groundCheck: {fileID: 0}
+  checkRadius: 0
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 0
+  jumpForce: 0
+  spawnPos: {x: 0, y: 0}
+  controllerSuffix: 
+  audioController: {fileID: 0}
+  controllerNumber: 0
+  horizontalMovement: 0
+  isDragging: 0
+  isGrounded: 1
+  playerStats: {fileID: 0}
 --- !u!114 &802510872 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3718933952624822611, guid: 118e40c695c4dfc40a83a5f3f7426f22,
