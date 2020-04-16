@@ -31,11 +31,11 @@ public class lever : MonoBehaviour
 
                 if (isActive)
                 {
-                   parentTransform.localScale = new Vector3(transform.position.x, -1, 1);
+                   parentTransform.localScale = new Vector3(transform.localScale.x, -1, 1);
                 }
                 else
                 {
-                    parentTransform.localScale = new Vector3(transform.position.x, 1, 1);
+                    parentTransform.localScale = new Vector3(transform.localScale.x, 1, 1);
                 }
             }
         }
