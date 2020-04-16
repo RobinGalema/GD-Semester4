@@ -6,6 +6,10 @@ public class doorAction : MonoBehaviour
 {
     public List<button>  buttonScripts = new List<button>();
     public GameObject door;
+    public float moveX = 0f;
+    public float moveY = 0f;
+    public float rotation = 0;
+
 
     private Vector2 positionA;
     private bool wasActive = false;
@@ -35,7 +39,8 @@ public class doorAction : MonoBehaviour
     private void openDoor()
     {
         //moves door 4 increments upwards 
-        door.transform.position = (positionA + new Vector2(0, 4));       
+        door.transform.position = (positionA + new Vector2(moveX, moveY));
+        door.transform.rotation = Quaternion.Euler(Vector3.forward * rotation);
     }
 
     private void closeDoor()
