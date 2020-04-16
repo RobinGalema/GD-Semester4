@@ -127,6 +127,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7886995524245971495, guid: e2eabfed90fe91a4d9499ccffc41d828,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -8807927608424582482, guid: e8afd28d5d762004e8b7ed29553b6178,
+        type: 2}
     - target: {fileID: 5890782712686003195, guid: e2eabfed90fe91a4d9499ccffc41d828,
         type: 3}
       propertyPath: m_Name
@@ -31211,6 +31217,7 @@ MonoBehaviour:
   jumpForce: 0
   spawnPos: {x: 0, y: 0}
   controllerSuffix: 
+  audioController: {fileID: 0}
   controllerNumber: 0
   horizontalMovement: 0
   isDragging: 0

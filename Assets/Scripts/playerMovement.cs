@@ -12,6 +12,7 @@ public class playerMovement : MonoBehaviour
     public float jumpForce;
     public Vector2 spawnPos;
     public string controllerSuffix;
+    public audioController audioController;
 
     [HideInInspector] public int controllerNumber;
 
@@ -91,6 +92,7 @@ public class playerMovement : MonoBehaviour
             if (Input.GetButtonDown("A" + controllerSuffix) && isGrounded)
             {
                 rb.velocity = Vector2.up * jumpForce;
+                audioController.playjumpsound();
             }
 
             // Sneaking
