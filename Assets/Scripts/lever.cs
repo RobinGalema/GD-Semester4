@@ -32,12 +32,12 @@ public class lever : MonoBehaviour
 
                 if (isActive)
                 {
-                   parentTransform.localScale = new Vector3(transform.localScale.x, -1, 1);
+                   parentTransform.localScale = new Vector3(parentTransform.localScale.x, -parentTransform.localScale.y, 1);
                     AudioController.playLeverSound(true);
                 }
                 else
                 {
-                    parentTransform.localScale = new Vector3(transform.localScale.x, 1, 1);
+                    parentTransform.localScale = new Vector3(parentTransform.localScale.x, -parentTransform.localScale.y, 1);
                     AudioController.playLeverSound(false);
                 }
             }

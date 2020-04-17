@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3898aea5e11f6146b4cf283e5f209f0, type: 3}
   m_Name: Player1
   m_EditorClassIdentifier: 
-  spawnPos: {x: 13.04, y: 0.97000027}
-  deathCounter: 0
+  spawnPos: {x: 0, y: 0}
+  deathCounter: 2
   controllerSuffix: 1XBOX
