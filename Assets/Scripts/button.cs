@@ -8,7 +8,13 @@ public class button : MonoBehaviour
     public bool isActivated = false;
     public int objectsNeeded;
 
+    private audioController audioController;
     [HideInInspector]public int objectsOnButton = 0;
+
+    private void Start()
+    {
+        audioController = GetComponent<audioController>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -29,6 +35,11 @@ public class button : MonoBehaviour
             isActivated = checkActive();
             Debug.Log("---> Is the button active? : " + isActivated);
         }
+
+        if (checkActive())
+        {
+            audioController.playButtonSound(true);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -46,6 +57,11 @@ public class button : MonoBehaviour
             objectsOnButton--;
             isActivated = checkActive();
             Debug.Log("---> Is the button active? : " + isActivated);
+        }
+
+        if (!checkActive())
+        {
+            audioController.playButtonSound(false);
         }
     }
 
