@@ -21,6 +21,9 @@ public class audioController : MonoBehaviour
     public AudioClip doorOpen;
     public AudioClip doorClose;
 
+    [Header("Box Sound")]
+    public AudioClip boxDrag;
+
     public void playjumpsound()
     {
         source.clip = jumpSound;
@@ -82,5 +85,11 @@ public class audioController : MonoBehaviour
                     break;
                 }
         }
+    }
+
+    public void playBoxDragSound()
+    {
+        source.clip = boxDrag;
+        source.Play();
     }
 }

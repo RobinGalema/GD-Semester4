@@ -12,6 +12,7 @@ public class weigthedObject : MonoBehaviour
     private playerMovement playerController;
     private Transform playerGroundCheck;
     private Vector2 spawnPos;
+    private audioController audioController;
 
     private void Start()
     {
@@ -20,6 +21,7 @@ public class weigthedObject : MonoBehaviour
         spawnPos = rb.position;
         Debug.Log(spawnPos);
         rbIcon.SetActive(false);
+        audioController = GetComponent<audioController>();
     }
 
     // Update is called once per frame
@@ -98,6 +100,7 @@ public class weigthedObject : MonoBehaviour
                     objectIsDraggable = true;
                     playerController.isDragging = true;
                     rbIcon.SetActive(false);
+                    audioController.playBoxDragSound();
                 }
 
                 if (Input.GetButtonUp("RB" + interactionSuffix))
@@ -107,6 +110,7 @@ public class weigthedObject : MonoBehaviour
                     objectIsDraggable = false;
                     playerController.isDragging = false;
                     rbIcon.SetActive(true);
+                    audioController.source.Stop();
                 }
             }
             else
