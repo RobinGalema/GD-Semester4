@@ -13,6 +13,7 @@ public class escapePod : MonoBehaviour
 
     private bool playerInRange = false;
     private string playerSuffix;
+    private List<GameObject> playersInRange = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,13 @@ public class escapePod : MonoBehaviour
         {
             playerSuffix = collision.gameObject.GetComponent<playerMovement>().controllerSuffix;
             playerInRange = true;
-            uiElement.SetActive(true);
+            playersInRange.Add(collision.gameObject);
+            Debug.Log(playersInRange.Count);
+
+            if (playersInRange.Count == 4)
+            {
+                uiElement.SetActive(true);
+            }
         }
     }
 
@@ -35,7 +42,12 @@ public class escapePod : MonoBehaviour
         if (collision.tag =="Player")
         {
             playerInRange = false;
-            uiElement.SetActive(false);
+            playersInRange.Remove(collision.gameObject);
+            
+            if (playersInRange.Count < 4)
+            {
+                uiElement.SetActive(false);
+            }
         }
     }
 
@@ -47,7 +59,10 @@ public class escapePod : MonoBehaviour
             if (Input.GetButtonDown("X"+playerSuffix))
             {
                 Debug.Log("player wants to leave");
-                LoadNextLevel(sceneToLoad);
+                if (playersInRange.Count == 4)
+                {
+                    LoadNextLevel(sceneToLoad);
+                }  
             }
         }
     }
