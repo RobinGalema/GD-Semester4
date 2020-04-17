@@ -14,13 +14,14 @@ public class doorAction : MonoBehaviour
     private Quaternion standardRotation;
     private Vector2 positionA;
     private bool wasActive = false;
-
+    private audioController audioController;
 
     // Start is called before the first frame update
     void Start()
     {
         positionA = door.transform.position;
         standardRotation = transform.rotation;
+        audioController = GetComponent<audioController>();
     }
 
     // Update is called once per frame
@@ -43,6 +44,7 @@ public class doorAction : MonoBehaviour
         //moves door 4 increments upwards 
         door.transform.position = (positionA + new Vector2(moveX, moveY));
         door.transform.rotation = Quaternion.Euler(Vector3.forward * rotation);
+        audioController.playDoorSound(true);
     }
 
     private void closeDoor()
@@ -50,6 +52,7 @@ public class doorAction : MonoBehaviour
         //moves door to original position
         door.transform.position = (positionA);
         door.transform.rotation = standardRotation;
+        audioController.playDoorSound(false);
     }
 
     private bool checkIfActive()

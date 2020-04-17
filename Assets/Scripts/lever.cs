@@ -10,12 +10,13 @@ public class lever : MonoBehaviour
 
     private bool playerInRange = false;
     private string controllerSuffix;
+    private audioController AudioController;
 
     private void Start()
     {
-        isActive = false;
-        xButtonIcon.SetActive(false);
-       
+       isActive = false;
+       xButtonIcon.SetActive(false);
+       AudioController = GetComponent<audioController>();
     }
 
     // Update is called once per frame
@@ -32,10 +33,12 @@ public class lever : MonoBehaviour
                 if (isActive)
                 {
                    parentTransform.localScale = new Vector3(transform.localScale.x, -1, 1);
+                    AudioController.playLeverSound(true);
                 }
                 else
                 {
                     parentTransform.localScale = new Vector3(transform.localScale.x, 1, 1);
+                    AudioController.playLeverSound(false);
                 }
             }
         }
