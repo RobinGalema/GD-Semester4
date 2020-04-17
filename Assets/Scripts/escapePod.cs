@@ -55,7 +55,7 @@ public class escapePod : MonoBehaviour
     void Update()
     {
         if (playerInRange)
-        {
+        {   
             if (Input.GetButtonDown("X"+playerSuffix))
             {
                 Debug.Log("player wants to leave");
